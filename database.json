@@ -1,0 +1,130 @@
+{
+  "teams": [
+    {
+      "id": 1,
+      "nume": "FC Barcelona"
+    },
+    {
+      "id": 2,
+      "nume": "Juventus Torino"
+    },
+    {
+      "id": 3,
+      "nume": "Liverpool FC"
+    },
+    {
+      "id": 4,
+      "nume": "Real Madrid FC"
+    }
+  ],
+  "players": [
+    {
+      "id": 2,
+      "id_echipa": "1",
+      "nume": "Lionel Messi",
+      "imagine": "imagini/messi.jpg",
+      "post": "Atacant",
+      "numar_tricou": 10,
+      "accidentat": false
+    },
+    {
+      "id": 2,
+      "id_echipa": "1",
+      "nume": "Luis Suarez",
+      "imagine": "imagini/suarez.jpg",
+      "post": "Atacant",
+      "numar_tricou": 9,
+      "accidentat": true
+    },
+    {
+      "id": 3,
+      "id_echipa": "1",
+      "nume": "Gerrard Pique",
+      "imagine": "imagini/pique.jpg",
+      "post": "Fundas",
+      "numar_tricou": 3,
+      "accidentat": false
+    },
+    {
+      "id": 4,
+      "id_echipa": "2",
+      "nume": "Cristiano Ronaldo",
+      "imagine": "imagini/ronaldo.jpg",
+      "post": "Atacant",
+      "numar_tricou": 7,
+      "accidentat": false
+    },
+    {
+      "id": 5,
+      "id_echipa": 2,
+      "nume": "Paulo Dybala",
+      "imagine": "imagini/dybala.jpg",
+      "post": "Mijlocas",
+      "numar_tricou": 10,
+      "accidentat": false
+    },
+    {
+      "id": 6,
+      "id_echipa": 2,
+      "nume": "Giorgio Chiellini",
+      "imagine": "imagini/chiellini.jpg",
+      "post": "Fundas",
+      "numar_tricou": 3,
+      "accidentat": true
+    },
+    {
+      "id": 7,
+      "id_echipa": 3,
+      "nume": "Van Dijk",
+      "imagine": "imagini/vandijk.jpg",
+      "post": "Fundas",
+      "numar_tricou": 4,
+      "accidentat": false
+    },
+    {
+      "id": 8,
+      "id_echipa": 3,
+      "nume": "Mohamed Salah",
+      "imagine": "imagini/salah.jpg",
+      "post": "Atacant",
+      "numar_tricou": 10,
+      "accidentat": false
+    },
+    {
+      "id": 9,
+      "id_echipa": 3,
+      "nume": "Henrique Fabinho",
+      "imagine": "imagini/fabinho.jpg",
+      "post": "Mijlocas",
+      "numar_tricou": 5,
+      "accidentat": true
+    },
+    {
+      "id": 10,
+      "id_echipa": 4,
+      "nume": "Gareth Bale",
+      "imagine": "imagini/bale.jpg",
+      "post": "Atacant",
+      "numar_tricou": 11,
+      "accidentat": true
+    },
+    {
+      "id": 11,
+      "id_echipa": 4,
+      "nume": "Luka Modric",
+      "imagine": "imagini/modric.jpg",
+      "post": "Mijlocas",
+      "numar_tricou": 10,
+      "accidentat": false
+    },
+    {
+      "id": 12,
+      "id_echipa": 4,
+      "nume": "Dani Carvajal",
+      "imagine": "imagini/carvajal.jpg",
+      "post": "Fundas",
+      "numar_tricou": 2,
+      "accidentat": false
+    }
+  ]
+}

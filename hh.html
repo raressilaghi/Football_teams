@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script>
+
+            var id_echipa=0;
+            
+            function adauga_jucator(jucator){
+                continutDeAfisat="<div class='instanta' id="+jucator.id+"> <div id='denumire'> <p> Nume: <b>"
+                            +jucator.nume+"</b></p> <button class='remove' id="+jucator.id+">Stergere</button> </div> <div id='inregistrari'><div id='imagine'><img src="
+                            +jucator.imagine+"></img></div><div id='informatii'><p> Post: <b>"
+                            +jucator.post+"</b></p><p> Numar tricou: <b>"
+                            +jucator.numar_tricou+"</b></p><p> Accidentat?: <b>"
+                            +jucator.accidentat+"</b></p></div></div></div>"
+                $("#sectiunea_B").append(continutDeAfisat)
+            }
+
+            function afisare_echipe()
+            {   
+                document.getElementById("buton_categorii").onclick = null;
+                adresa="http://localhost:4000/teams?callback=?"
+                $.getJSON(adresa, function(raspuns)
+                {
+                    $.each(raspuns,function(indice,echipa)
+                     {  
+                        continutDeAfisat="<li id="+echipa.id+" onclick='afisare_jucatori(id)'>"+echipa.nume+"</li>"
+                        $("#lista").append(continutDeAfisat)
+                    }
+                    )
+                }
+                )
+                document.getElementById("sectiunea_A").style.visibility = "visible";
+            }
+            
+
+            function afisare_jucatori(id)
+            {
+                
+                id_echipa=id;
+                adresa="http://localhost:4000/players?id_echipa="+id
+                $.getJSON(adresa, function(raspuns)
+                {   
+                    $("#sectiunea_B").empty();
+                    $.each(raspuns,function(indice,jucator)
+                     {  
+                        
+                        adauga_jucator(jucator);
+                        
+                    }
+                    )
+                }
+                )
+                document.getElementById("sectiunea_B").style.visibility = "visible";
+            }
+        
+            $(document).on("click", "button.remove",function(){
+                
+                var id= $(this).attr("id");
+                
+                $.ajax({
+                    type:'DELETE',
+                    url: "http://localhost:4000/players/"+id,
+                    success: function(response){
+                        $("div").remove("#"+id);
+                    }
+                })
+            })
+            
+            $(document).on("mouseover", "button.inserare",function(){
+                
+                var $nume=$('#nume');
+                var $post=$('#post');
+                var $numar=$('#numar');
+                
+                var jucator={
+                    nume: $nume.val(),
+                    post: $post.val(),
+                    numar_tricou: parseInt($numar.val()),
+                    id_echipa: id_echipa,
+                };
+
+                if(jucator.id_echipa != 0)
+                    
+                  $.ajax({
+                    type:'POST',
+                    url:'http://localhost:4000/players',
+                    data: jucator,
+                    success: function(jucator){
+                        adauga_jucator(jucator);
+                    }
+                  })
+                else
+                    alert('Nu s-a dat click pe nici o echipa!');
+            })
+          
+        </script>
+    </head>
+    <body>
+        <div id="aplicatie">
+            <header>
+                <button id="buton_categorii" onclick="afisare_echipe()"> Afisare Echipe </button> 
+            </header>
+            <main>
+                <div id="sectiuni">
+                    <section id="sectiunea_A">
+                        <ul id="lista"></ul>
+                    </section>
+                    <section id="sectiunea_B">
+                    </section>
+                </div>
+                <section id="sectiunea_C">
+                    <div id="form">
+                        <div id="enunt">
+                        <b>Formular inserare fotbalisti</b>
+                        </div>
+                        <div id="input">
+                            <input type="text", id='nume', placeholder="...Nume jucator..."/><br>
+                            <input type="text", id='post', placeholder="...Post..."/><br>
+                            <input type="text", id='numar', placeholder="...Numar Tricou..."/><br>
+                        </div>
+                        <div id="button">
+                            <button class="inserare" >Inserare</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        <div>
+    </body>
+</html>
